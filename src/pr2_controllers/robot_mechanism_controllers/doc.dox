@@ -1,0 +1,8 @@
+/** 
+@mainpage
+@htmlinclude manifest.html
+
+Generic Robot Controllers
+
+The controllers should be used from their ROS API.
+**/

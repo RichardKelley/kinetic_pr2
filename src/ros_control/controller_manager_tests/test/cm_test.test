@@ -1,0 +1,13 @@
+<launch>
+  <rosparam>
+    my_controller:
+      type: controller_manager_tests/EffortTestController
+    my_controller2:
+      type: controller_manager_tests/EffortTestController
+    dummy_controller:
+      type: controller_manager_tests/MyDummyController
+  </rosparam>
+
+  <node pkg="controller_manager_tests" type="dummy_app" name="dummy_app" />
+  <test test-name="cm_test" pkg="controller_manager_tests" type="cm_test"/>
+</launch>

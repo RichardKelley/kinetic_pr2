@@ -1,0 +1,11 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+\b pr2_mechanism_diagnostics produces the diagnostics output for joints and controllers from pr2_mechanism_msgs/MechanismStatistics messages. 
+
+There is no code API for this package. 
+
+
+
+*/

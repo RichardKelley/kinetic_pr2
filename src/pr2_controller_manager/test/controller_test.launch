@@ -1,0 +1,43 @@
+<launch>
+  <!-- Load configuration of controllers -->
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config.yaml" ns="controller1" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config2.yaml" ns="controller2" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config3.yaml" ns="controller3" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config4.yaml" ns="controller4" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config.yaml" ns="controller5" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config2.yaml" ns="controller6" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config4.yaml" ns="controller7" command="load" />
+
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken.yaml" ns="controller8" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken2.yaml" ns="controller9" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken3.yaml" ns="controller11" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken4.yaml" ns="controller12" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken5.yaml" ns="controller13" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken6.yaml" ns="controller14" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken7.yaml" ns="controller15" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken8.yaml" ns="controller16" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken9.yaml" ns="controller17" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken10.yaml" ns="controller18" command="load" />
+  <rosparam file="$(find pr2_controller_manager)/test/controller_config_broken11.yaml" ns="controller19" command="load" />
+
+  <!-- Spawn some controllers stopped/started -->
+  <node pkg="pr2_controller_manager" type="spawner" args="controller1" name="spawn1"/>
+  <node pkg="pr2_controller_manager" type="spawner" args="--stopped controller2" name="spawn2" />
+  <node pkg="pr2_controller_manager" type="spawner" args="controller3 controller4" name="spawn34" />  
+  <node pkg="pr2_controller_manager" type="spawner" args="--stopped controller5 controller6" name="spawn56" />  
+
+  <!-- controller manager configuration -->
+  <param name="pr2_controller_manager/mechanism_statistics_publish_rate" value="2.0" />
+  <param name="pr2_controller_manager/joint_state_publish_rate" value="200.0" />
+
+  <!-- Diagnostics -->
+  <node pkg="pr2_mechanism_diagnostics" type="pr2_mechanism_diagnostics" name="pr2_mechanism_diagnostics" />
+
+  <!-- fake robot -->
+  <node pkg="pr2_controller_manager" type="test_robot" name="test_robot" />
+  <include file="$(find pr2_description)/robots/upload_pr2.launch" />
+
+  <!-- test -->
+  <test test-name="test_controller_manager" pkg="pr2_controller_manager" type="test_controllers" time-limit="200" />
+
+</launch>

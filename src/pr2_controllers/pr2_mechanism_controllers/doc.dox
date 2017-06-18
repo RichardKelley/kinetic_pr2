@@ -1,0 +1,12 @@
+/**
+@mainpage
+
+@htmlinclude manifest.html
+
+PR2 Specific Controllers
+
+The controller should be used through their ROS APIs.
+
+**/
+
+

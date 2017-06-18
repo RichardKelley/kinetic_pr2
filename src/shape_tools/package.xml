@@ -1,0 +1,20 @@
+<package>
+  <name>shape_tools</name>
+  <version>0.2.1</version>
+  <description>Tools for operating on shape messages.</description>
+  <author email="isucan@willowgarage.edu">Ioan Sucan</author>
+  <author email="gjones@willowgarage.edu">Gil Jones</author>
+  <maintainer email="isucan@willowgarage.com">Ioan Sucan</maintainer>
+
+  <license>BSD</license>  
+
+  <url>http://www.ros.org/wiki/shape_tools</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>shape_msgs</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+
+  <run_depend>visualization_msgs</run_depend>
+
+</package>

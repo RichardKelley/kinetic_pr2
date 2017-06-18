@@ -1,0 +1,7 @@
+sensors:
+  - sensor_type: occupancy_map_monitor/PointCloudOctomapUpdater
+    point_cloud_topic: /narrow_stereo/points2
+    max_range: 5.0
+    frame_subsample: 1
+    point_subsample: 1
+
