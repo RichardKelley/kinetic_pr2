@@ -1,0 +1,43 @@
+root: [ circuit0, circuit1, circuit2]
+
+wiring_tree: { 
+ circuit1: { component: 'Power board 0', value: 'Breaker 1 Voltage', tolerance: 10,
+             children: []},
+ circuit0: {component: "Power board 0", value: "Breaker 0 Voltage", tolerance: 10,
+             children: ["fr_caster_turret","fl_caster_turret", "br_caster_turret","bl_caster_turret"]},
+ circuit2: { component: "Power board 0", value: "Breaker 2 Voltage", tolerance: 10 ,
+             children: []},
+
+ fl_caster_turret: { component: "EtherCAT Device (fl_caster_rotation_motor)", 
+  value: "Supply voltage", tolerance: 10, children: [fl_caster_l_wheel]},
+   fl_caster_l_wheel: { component: "EtherCAT Device (fl_caster_l_wheel_motor)", 
+    value: "Supply voltage", tolerance: 10, children: [fr_caster_r_wheel]},
+   fl_caster_r_wheel: { component: "EtherCAT Device (fl_caster_r_wheel_motor)", 
+    value: "Supply voltage", tolerance: 10, children: []},
+
+ fr_caster_turret: { component: "EtherCAT Device (fr_caster_rotation_motor)", 
+  value: "Supply voltage", tolerance: 10, children: [fr_caster_l_wheel]},
+   fr_caster_l_wheel: { component: "EtherCAT Device (fr_caster_l_wheel_motor)", 
+    value: "Supply voltage", tolerance: 10, children: [fr_caster_r_wheel]},
+   fr_caster_r_wheel: { component: "EtherCAT Device (fr_caster_r_wheel_motor)", 
+    value: "Supply voltage", tolerance: 10, children: []},
+
+ bl_caster_turret: { component: "EtherCAT Device (bl_caster_rotation_motor)", 
+  value: "Supply voltage", tolerance: 10, children: [bl_caster_l_wheel]},
+   bl_caster_l_wheel: { component: "EtherCAT Device (bl_caster_l_wheel_motor)", 
+    value: "Supply voltage", tolerance: 10, children: [br_caster_r_wheel]},
+   bl_caster_r_wheel: { component: "EtherCAT Device (bl_caster_r_wheel_motor)", 
+    value: "Supply voltage", tolerance: 10, children: []},
+
+ br_caster_turret: { component: "EtherCAT Device (br_caster_rotation_motor)", 
+  value: "Supply voltage", tolerance: 10, children: [br_caster_l_wheel]},
+   br_caster_l_wheel: { component: "EtherCAT Device (br_caster_l_wheel_motor)", 
+    value: "Supply voltage", tolerance: 10, children: [br_caster_r_wheel]},
+   br_caster_r_wheel: { component: "EtherCAT Device (br_caster_r_wheel_motor)", 
+    value: "Supply voltage", tolerance: 10, children: []}
+
+}
+
+
+
+

@@ -1,0 +1,22 @@
+<package>
+  <name>pr2_power_drivers</name>
+  <version>1.1.2</version>
+  <description>Power drivers for the PR2 robot.</description>
+  <maintainer email="ahendrix@willowgarage.com">Austin Hendrix</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/pr2_power_drivers</url>
+
+  <author>Blaise Gassend</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>pr2_power_board</run_depend>
+  <run_depend>power_monitor</run_depend>
+  <run_depend>ocean_battery_driver</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

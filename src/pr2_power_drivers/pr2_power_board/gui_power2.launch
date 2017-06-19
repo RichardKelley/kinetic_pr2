@@ -1,0 +1,4 @@
+<launch>
+<node pkg="pr2_power_board" type="view_power" name="$(anon view_power)"/>
+ <node name="power_board" pkg="pr2_power_board" type="power_node2" args="--address=10.68.0.50" respawn="true"/>
+</launch>

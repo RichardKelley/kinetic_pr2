@@ -1,0 +1,4 @@
+<launch>
+<node pkg="pr2_power_board" type="power_node" />
+
+</launch>

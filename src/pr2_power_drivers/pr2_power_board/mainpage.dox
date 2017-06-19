@@ -1,0 +1,91 @@
+/** 
+\mainpage 
+
+\htmlinclude manifest.html
+
+\b pr2_power_board provides a ROS interface to the power board used on the PR2 Robot. It sends out periodic requests
+for status updates to the specified IP address only. The update rate can be controlled with a parameter.
+
+\section rosapi ROS API
+
+List of nodes:
+- \b power_board_control
+
+<hr>
+
+\subsection power_board_control power_board_control
+
+\subsection Usage
+\verbatim
+$ power_node [-address=dotted.IP.address]
+\endverbatim
+- \b address : poll this specific IP address.
+
+ Execute this to communicate with the power board.  It will listen on all interfaces and send command messages
+out on the appropriate interface.
+
+\par Example
+\verbatim
+$ power_node --address=192.168.10.100
+\endverbatim
+
+Poll the power board at the given IP address. The power board acquires it's address via DHCP.
+
+\section topic ROS topics
+
+Publishes to (name / type):
+- \b "/diagnostic" / diagnostic_msgs::DiagnosticArray : The standard diagnostic status message format for self reporting.  To view this use the package runtime_monitor's wxmonitor
+- \b "/power_board_state" / pr2_msgs::PowerBoardState : A simple message reporting the status of the power board in a message format that is easy to use.
+
+\subsection services ROS services
+
+- \b "power_board_control": passes ROS messages on to the power board hardware. (Old format requires serial number)
+- \b "power_board_control2": passes ROS messages on to the power board hardware. (New format, no serial number required)
+
+\subsection param ROS Parameters
+- \b "power_node/sample_frequency": Frequency to poll the hardware, default is 10Hz.
+
+\section commandline Command-line tools
+
+- \b send_command simple script to send a command
+- \b view_power gui to view the state and control a power board
+
+
+\subsection script_name send_command 
+
+send_command will send a command over ROS to the power_node which will then execute it.  
+Thus send_command requires a power_node to be operating.  
+
+\subsection Usage
+\verbatim
+$ ./send_command serial_number breaker_number command flags
+\endverbatim
+ - serial_number of the board you want to control
+ - breaker_number (0 | 1 | 2)
+ - command = (start | stop | reset | disable)
+ - flags are used to invoke special conditions in the power board, normally this should be zero
+
+\par Example
+\verbatim
+$ rosrun pr2_power_board send_command 1000 1 start 0
+\endverbatim
+
+Turns on circuit 1 on board with serial number 1000.
+
+@subsection script_name view_power Power Board GUI
+
+ This will start up a gui to allow viewing and commanding of the power board.  This simply
+provides a graphical interface to the power_node over ROS.  Without the power_node running this will do nothing.
+
+Choose the appropriate board with the drop-box. The list is dynamically 
+populated based on the messages heard by the power_node. If the power_node
+stops receiving messages from a Power Board then it's time stamps will become
+stale and the gui with gray out, indicating communication with the Power Board
+has been lost.
+
+
+\image html view_power.png
+
+*/
+
+

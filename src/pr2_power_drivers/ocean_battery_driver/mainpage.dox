@@ -1,0 +1,33 @@
+/** 
+\mainpage 
+
+@htmlinclude manifest.html
+
+@b ocean_battery_driver provides an interface to the IBPS battery power system used on the PR2 Robot.
+
+
+@section usage Commandline Usage
+monitor_batteries [--dev] [--count] [--debug]
+ - dev: The device name to open "/dev/ttyUSB0"
+ - count: How many devices to open, set this to "1" when using the "--dev" option, otherwise it appends an ID on the end of the base device string.
+ - debug: debug level passed to the ocean driver, higher values report more information.
+
+@section param ROS Parameters
+ - Read: 
+  - @b "ocean_server/number_of_ports": How many ocean_server nodes to start up, these will be enumerated automatically.
+  - @b "ocean_server/port#": Specifies the device to open for this particular port, the "#" is replaced by the enumeration value up to number_of_ports-1.
+  - @b "ocean_server/debug_level": debug level for the ocean driver, higher values report more information.
+
+
+@section topic ROS topics
+
+Publishes to (name / type):
+ - @b "/diagnostics" / diagnostic_msgs::DiagnosticArray : The standard diagnostic status message format for self reporting.  
+ - @b "/battery/server" / pr2_msgs::BatteryServer : The ocean server battery status information, one per port.
+ - @b "/battery/server2" / pr2_msgs::BatteryServer2 : The new ocean server battery status information, one per port.
+
+
+Notes when setting up:
+ - The user must have permissions on the serial ports in use.  In Ubuntu adding the user to groupd dialout usually is sufficient.  
+
+ */
