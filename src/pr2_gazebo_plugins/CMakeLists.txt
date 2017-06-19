@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(pr2_gazebo_plugins)
 
+add_compile_options(-std=c++11)
+
 add_definitions(-fPIC)
 
 # catkin dependencies
